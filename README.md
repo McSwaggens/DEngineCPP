@@ -1,2 +1,2 @@
 # dengine
-2D game engine written in C++ using SDL/OpenGL
+2D game engine using SDL and C++
