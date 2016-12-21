@@ -22,14 +22,14 @@ void Render::DrawLine (Vector2D start, Vector2D end, Color color)
 {
 	SDL_SetRenderDrawColor (render, CP(color));
 	
-	SDL_RenderDrawLine (render, VP (start), VP (end));
+	SDL_RenderDrawLine (render, VPI (start), VPI (end));
 }
 
 void Render::DrawFilledRectangle (Vector2D start, Vector2D size, Color color)
 {
 	SDL_SetRenderDrawColor (render, CP(color));
 	
-	SDL_Rect rect = { VP(start), VP(size) };
+	SDL_Rect rect = { VPI(start), VPI(size) };
 	
 	SDL_RenderFillRect (render, &rect);
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "entity.h"
-
 class Actor
 {
 public:
@@ -11,7 +9,7 @@ public:
 
 //	CONSTRUCTOR
 	// Not needed for now
-	// Actor ();
+	Actor ();
 
 //	MEMBER FUNCTIONS
 	

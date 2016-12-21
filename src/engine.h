@@ -5,15 +5,20 @@
 #include <string>
 #include "entity.h"
 #include "actor.h"
+#include "physical.h"
 #include "vector.h"
 #include "engine_types.h"
 #include "time.h"
 
 using namespace Time;
 
-extern uint64_t last;
-extern uint64_t now;
-extern double delta;
+enum CLASS
+{
+	ENTITY = 1,
+	ACTOR = 2,
+	PHYSICAL = 3
+};
+
 
 namespace Engine
 {
@@ -21,6 +26,7 @@ namespace Engine
 
 	extern std::vector<Entity*> entities;
 	extern std::vector<Actor*> actors;
+	extern std::vector<Physical*> physicals;
 	extern std::vector<Entity*> event_listener_entities;
 
 // MEMBER FUNCTIONS	
@@ -28,8 +34,10 @@ namespace Engine
 	void Start ();
 	void Shutdown ();
 	
+	
 	void RegisterEntity (Entity* entity);
 	void RegisterActor (Actor* actor);
+	void RegisterPhysical (Physical* physical);
 	
 	void SetTitle (std::string title);
 	void SetSize (Vector size);

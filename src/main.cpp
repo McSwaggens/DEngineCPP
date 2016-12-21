@@ -7,10 +7,15 @@
 
 #define PI 3.14159265
 
+
 class Sinner : public Entity, public Actor
 {
 	float i = 0;
 	float s = 0;
+public:
+	Sinner () : Entity (), Actor ()
+	{
+	}
 	
 	virtual void Tick ()
 	{
@@ -27,7 +32,7 @@ class Sinner : public Entity, public Actor
 		for (float d = 0.0f, pixel = 0; pixel < 1920; pixel += 5, d += 0.05f, dd += 0.65f, ddd += 0.8f)
 		{
 			//s = (sin (d+i) * PI * 20) / cos (sin (d));
-			s = (sin (d+i) * PI * 20) + (sin (dd+i) * PI * 2) + (sin (ddd+(i + 0.5f)) * PI + 1.2f);
+			s = (sin (d-i) * PI * 60);
 			
 			Vector next (pixel, s);
 			
@@ -43,9 +48,7 @@ int main ()
 	Engine::Initialize ();
 	Engine::SetSize (Vector(1920, 1080));
 	
-	Sinner sinner;
-	Engine::RegisterEntity (&sinner);
-	Engine::RegisterActor (&sinner);
+	Sinner* sinner = new Sinner ();
 	
 	Engine::Start ();
 	

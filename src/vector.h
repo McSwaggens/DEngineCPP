@@ -4,14 +4,21 @@
 #define SIZE Vector2D
 
 #define VP(c) c.x, c.y
+#define VPI(c) (int)c.x, (int)c.y
 #define Vector Vector2D
 
 struct Vector2D
 {
-	int x;
-	int y;
+	float x;
+	float y;
 	
-	Vector2D (int x, int y)
+	Vector2D ()
+	{
+		this->x = 0.0f;
+		this->y = 0.0f;
+	}
+	
+	Vector2D (float x, float y)
 	{
 		this->x = x;
 		this->y = y;
@@ -36,4 +43,6 @@ struct Vector2D
 	{
 		return Vector (x / v.x, y / v.y);
 	}
+	
+	
 };

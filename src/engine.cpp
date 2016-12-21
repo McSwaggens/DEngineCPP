@@ -17,6 +17,7 @@ std::string Engine::game_name = "dengine";
 // WORLD
 std::vector<Entity*>	Engine::entities;
 std::vector<Actor*>		Engine::actors;
+std::vector<Physical*>	Engine::physicals;
 std::vector<Entity*>	Engine::event_listener_entities;
 
 bool EngineInternal::running = false;
@@ -192,6 +193,12 @@ void Engine::RegisterActor (Actor* actor)
 {
 	Engine::actors.push_back (actor);
 }
+
+void Engine::RegisterPhysical (Physical* physical)
+{
+	Engine::physicals.push_back (physical);
+}
+
 
 
 
