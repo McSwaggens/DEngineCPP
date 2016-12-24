@@ -1,8 +1,9 @@
 #pragma once
 
 #include "vector.h"
+#include "engine_object.h"
 
-class Physical
+class Physical : virtual public BaseEngineObject
 {
 private:
 	void ApplyGravity ();

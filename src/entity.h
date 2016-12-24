@@ -2,9 +2,9 @@
 
 #include <stdint.h>
 #include "engine_types.h"
+#include "engine_object.h"
 
-
-class Entity
+class Entity : virtual public BaseEngineObject
 {
 public:
 

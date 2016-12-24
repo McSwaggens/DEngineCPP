@@ -10,6 +10,9 @@ Entity::Entity ()
 	
 	// Register the entity with the engine
 	Engine::RegisterEntity (this);
+	
+	// Set the ENTITY bitflag in the BaseEngineObject class_id variable
+	class_id |= ENTITY;
 }
 
 void Entity::Listen ()

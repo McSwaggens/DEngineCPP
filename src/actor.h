@@ -1,6 +1,8 @@
 #pragma once
 
-class Actor
+#include "engine_object.h"
+
+class Actor : virtual public BaseEngineObject
 {
 public:
 

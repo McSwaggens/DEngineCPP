@@ -12,13 +12,17 @@
 
 using namespace Time;
 
+#define FLAG = 1 <<
+
 enum CLASS
 {
-	ENTITY = 1,
-	ACTOR = 2,
-	PHYSICAL = 3
+	ENTITY		FLAG 0,
+	ACTOR		FLAG 1,
+	PHYSICAL	FLAG 2,
 };
 
+
+#undef FLAG
 
 namespace Engine
 {
@@ -29,16 +33,16 @@ namespace Engine
 	extern std::vector<Physical*> physicals;
 	extern std::vector<Entity*> event_listener_entities;
 
-// MEMBER FUNCTIONS	
+// MEMBER FUNCTIONS
 	void Initialize ();
 	void Start ();
 	void Shutdown ();
-	
-	
+
+
 	void RegisterEntity (Entity* entity);
 	void RegisterActor (Actor* actor);
 	void RegisterPhysical (Physical* physical);
-	
+
 	void SetTitle (std::string title);
 	void SetSize (Vector size);
 }

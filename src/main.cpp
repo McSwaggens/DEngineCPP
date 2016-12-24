@@ -8,15 +8,13 @@
 #define PI 3.14159265
 
 
+using namespace std;
+
 class Sinner : public Entity, public Actor
 {
 	float i = 0;
 	float s = 0;
 public:
-	Sinner () : Entity (), Actor ()
-	{
-	}
-	
 	virtual void Tick ()
 	{
 		i += 2 * Time::delta;
@@ -49,6 +47,10 @@ int main ()
 	Engine::SetSize (Vector(1920, 1080));
 	
 	Sinner* sinner = new Sinner ();
+	
+	cout << "Entity: " << (bool)(sinner->class_id & ENTITY) <<
+			"\nActor: " << (bool)(sinner->class_id & ACTOR) <<
+			"\nPhysical: " << (bool)(sinner->class_id & PHYSICAL) << endl;
 	
 	Engine::Start ();
 	
