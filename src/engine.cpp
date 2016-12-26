@@ -166,13 +166,18 @@ void Engine::Start ()
 {
 	running = true;
 	
+	//Start the tick loop
 	TickLoop ();
 }
 
 void Engine::Shutdown ()
 {
 	printf ("Shutting down engine...\n");
+	
+	// Signal that the engine should stop the tickloop after the current tick
 	running = false;
+	
+	// Shutdown SDL
 	SDL_DestroyWindow (EngineInternal::window);
 	SDL_Quit ();
 }
@@ -192,21 +197,27 @@ void Engine::SetTitle (std::string title)
 	SDL_SetWindowTitle (EngineInternal::window, title.c_str());
 }
 
+// Set the screensize of the window (in pixels)
 void Engine::SetSize (Vector2D size)
 {
 	SDL_SetWindowSize (window, size.x, size.y);
 }
 
+
+// Register an entity with the engine
 void Engine::RegisterEntity (Entity* entity)
 {
 	Engine::entities.push_back (entity);
 }
 
+
+// Register an actor with the engine
 void Engine::RegisterActor (Actor* actor)
 {
 	Engine::actors.push_back (actor);
 }
 
+// Register a physical object with the engine
 void Engine::RegisterPhysical (Physical* physical)
 {
 	Engine::physicals.push_back (physical);
