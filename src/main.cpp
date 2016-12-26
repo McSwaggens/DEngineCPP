@@ -44,9 +44,10 @@ public:
 int main ()
 {
 	Engine::Initialize ();
-	Engine::SetSize (Vector(1920, 1080));
 	
 	Sinner* sinner = new Sinner ();
+	
+	cout << "screen resolution x: " << Engine::GetScreenSize ().x << " y: " << Engine::GetScreenSize ().y << endl;
 	
 	cout << "Entity: " << (bool)(sinner->class_id & ENTITY) <<
 			"\nActor: " << (bool)(sinner->class_id & ACTOR) <<

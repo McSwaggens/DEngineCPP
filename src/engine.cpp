@@ -13,6 +13,7 @@ SDL_Window*		EngineInternal::window;
 SDL_Renderer*	EngineInternal::render;
 
 std::string Engine::game_name = "dengine";
+Vector EngineInternal::screen_resolution = Vector (1280, 720);
 
 // WORLD
 std::vector<Entity*>	Engine::entities;
@@ -35,7 +36,7 @@ bool EngineInternal::Initialize_SDL ()
 	
 	
 	Log ("Initializing SDL window");
-	EngineInternal::window = SDL_CreateWindow (Engine::game_name.c_str(), 100, 100, 1000, 700, SDL_WINDOW_SHOWN);
+	EngineInternal::window = SDL_CreateWindow (Engine::game_name.c_str(), 100, 100, (int)screen_resolution.x, (int)screen_resolution.y, SDL_WINDOW_SHOWN);
 	
 	if (EngineInternal::window == nullptr)
 	{
@@ -55,6 +56,8 @@ bool EngineInternal::Initialize_SDL ()
 	}
 	
 	Log ("SDL initialization finished.");
+	
+	return true;
 }
 
 void EngineInternal::ProcessEngineEvent (SDL_Event event)
@@ -174,6 +177,16 @@ void Engine::Shutdown ()
 	SDL_Quit ();
 }
 
+const Vector Engine::GetScreenSize ()
+{
+	return screen_resolution;
+}
+
+const std::string Engine::GetTitle ()
+{
+	return game_name;
+}
+
 void Engine::SetTitle (std::string title)
 {
 	SDL_SetWindowTitle (EngineInternal::window, title.c_str());
@@ -198,8 +211,3 @@ void Engine::RegisterPhysical (Physical* physical)
 {
 	Engine::physicals.push_back (physical);
 }
-
-
-
-
-

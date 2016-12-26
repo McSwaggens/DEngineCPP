@@ -42,7 +42,10 @@ namespace Engine
 	void RegisterEntity (Entity* entity);
 	void RegisterActor (Actor* actor);
 	void RegisterPhysical (Physical* physical);
-
+	
+	const Vector GetScreenSize ();
+	const std::string GetTitle ();
+	
 	void SetTitle (std::string title);
 	void SetSize (Vector size);
 }
