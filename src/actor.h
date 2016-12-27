@@ -1,17 +1,19 @@
 #pragma once
 
 #include "engine_object.h"
+#include "vector.h"
 
 class Actor : virtual public BaseEngineObject
 {
 public:
 
 //	MEMBER VARIABLES
-	
+	Vector position;
+	Vector size;
 
 //	CONSTRUCTOR
-	// Not needed for now
 	Actor ();
+	Actor (Vector position, Vector size);
 
 //	MEMBER FUNCTIONS
 	

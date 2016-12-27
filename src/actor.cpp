@@ -10,3 +10,9 @@ Actor::Actor ()
 	// Set the ACTOR bitflag in the BaseEngineObject class_id variable
 	class_id |= ACTOR;
 }
+
+Actor::Actor (Vector position, Vector size)
+{
+	this->position = position;
+	this->size = size;
+}
