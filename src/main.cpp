@@ -10,48 +10,69 @@
 
 using namespace std;
 
-class Sinner : public Entity, public Actor
+enum NODE_STATUS
 {
-	float i = 0;
-	float s = 0;
-public:
-	virtual void Tick ()
+	FREE,
+	USED,
+	SOLID
+}
+
+#define SIZE 32
+
+struct Node : public Actor
+{
+	NODE_STATUS status;
+	
+	IVector i_position;
+	
+	int g_cost;
+	int h_cost;
+	
+	int GetFCost ()
 	{
-		i += 2 * Time::delta;
+		return g_cost + h_cost;
 	}
 	
-	virtual void Render ()
+	Node (IVector i_position)
 	{
-		Vector pos (-1, 400);
-		Vector last (0, 0);
+		this->i_position = i_position;
+		this->status = FREE;
+		this->position = this->i_position * 32;
 		
-		float dd = 0.0f;
-		float ddd = 0.0f;
-		for (float d = 0.0f, pixel = 0; pixel < 1920; pixel += 5, d += 0.05f, dd += 0.65f, ddd += 0.8f)
-		{
-			//s = (sin (d+i) * PI * 20) / cos (sin (d));
-			s = (sin (d-i) * PI * 60);
-			
-			Vector next (pixel, s);
-			
-			Render::DrawLine (pos + last, pos + next, Color (255, 255, 255, 255));
-			
-			last = next;
-		}
+	}
+	
+	void Render ()
+	{
+		Render::DrawFilledRectangle(position, size, Color (0, 0, 0, 255));
+		Render::DrawRectangle(position, size, Color (0, 0, 0, 255));
 	}
 };
+
+Node* grid[SIZE][SIZE];
+
+void InitializeGrid ()
+{
+	for (int y = 0; y < SIZE; y++)
+	{
+		for (int x = 0; x < SIZE; x++)
+		{
+			Node* node = new Node (Vector(x, y));
+			grid[x][y] = node;
+			
+			node->status = FREE;
+		}
+	}
+}
 
 int main ()
 {
 	Engine::Initialize ();
+	Engine::SetSize (Vector(SIZE*32, SIZE*32));
 	
-	Sinner* sinner = new Sinner ();
+	InitializeGrid();
 	
-	cout << "screen resolution x: " << Engine::GetScreenSize ().x << " y: " << Engine::GetScreenSize ().y << endl;
 	
-	cout << "Entity: " << (bool)(sinner->class_id & ENTITY) <<
-			"\nActor: " << (bool)(sinner->class_id & ACTOR) <<
-			"\nPhysical: " << (bool)(sinner->class_id & PHYSICAL) << endl;
+	
 	
 	Engine::Start ();
 	

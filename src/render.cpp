@@ -34,6 +34,15 @@ void Render::DrawFilledRectangle (Vector2D start, Vector2D size, Color color)
 	SDL_RenderFillRect (render, &rect);
 }
 
+void Render::DrawRectangle (Vector2D start, Vector2D size, Color color)
+{
+	SDL_SetRenderDrawColor (render, CP(color));
+	
+	SDL_Rect rect = { VPI(start), VPI(size) };
+	
+	SDL_DrawRect (render, &rect);
+}
+
 void Render::PushRender ()
 {
 	SDL_RenderPresent (render);
