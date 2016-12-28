@@ -54,6 +54,27 @@ struct Vector2D
 		return Vector (x / v.x, y / v.y);
 	}
 	
+	
+	Vector2D operator + (float fl) const
+	{
+		return Vector (x + fl, y + fl);
+	}
+	
+	Vector2D operator - (float fl) const
+	{
+		return Vector (x - fl, y - fl);
+	}
+	
+	Vector2D operator * (float fl) const
+	{
+		return Vector (x * fl, y * fl);
+	}
+	
+	Vector2D operator / (float fl) const
+	{
+		return Vector (x / fl, y / fl);
+	}
+	
 	IVector2D ToIVector ();
 };
 
@@ -106,6 +127,27 @@ struct IVector2D
 	IVector2D operator / (const IVector2D &v) const
 	{
 		return IVector (x / v.x, y / v.y);
+	}
+	
+	
+	IVector2D operator + (int i) const
+	{
+		return Vector (x + i, y + i);
+	}
+	
+	IVector2D operator - (int i) const
+	{
+		return Vector (x - i, y - i);
+	}
+	
+	IVector2D operator * (int i) const
+	{
+		return Vector (x * i, y * i);
+	}
+	
+	IVector2D operator / (int i) const
+	{
+		return Vector (x / i, y / i);
 	}
 	
 	Vector2D ToVector ();
