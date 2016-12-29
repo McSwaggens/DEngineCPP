@@ -41,7 +41,6 @@ public:
 		this->i_position = i_position;
 		this->position = (this->i_position * 32).ToVector();
 		this->size = Vector (32, 32);
-		Log (this->position);
 		status = FREE;
 	}
 	
