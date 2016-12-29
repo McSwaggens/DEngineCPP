@@ -10,17 +10,19 @@
 
 using namespace std;
 
+#define SIZE 32
+
 enum NODE_STATUS
 {
 	FREE,
 	USED,
 	SOLID
-}
+};
 
-#define SIZE 32
 
-struct Node : public Actor
+class Node : public Actor
 {
+public:
 	NODE_STATUS status;
 	
 	IVector i_position;
@@ -36,9 +38,8 @@ struct Node : public Actor
 	Node (IVector i_position)
 	{
 		this->i_position = i_position;
-		this->status = FREE;
-		this->position = this->i_position * 32;
-		
+		this->position = (this->i_position * 32).ToVector();
+		status = FREE;
 	}
 	
 	void Render ()
@@ -56,10 +57,8 @@ void InitializeGrid ()
 	{
 		for (int x = 0; x < SIZE; x++)
 		{
-			Node* node = new Node (Vector(x, y));
+			Node* node = new Node (IVector(x, y));
 			grid[x][y] = node;
-			
-			node->status = FREE;
 		}
 	}
 }

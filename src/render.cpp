@@ -40,7 +40,7 @@ void Render::DrawRectangle (Vector2D start, Vector2D size, Color color)
 	
 	SDL_Rect rect = { VPI(start), VPI(size) };
 	
-	SDL_DrawRect (render, &rect);
+	SDL_RenderDrawRect (render, &rect);
 }
 
 void Render::PushRender ()
