@@ -3,6 +3,7 @@
 #include "engine.h"
 #include "entity.h"
 #include "render.h"
+#include "logger.h"
 #include <math.h>
 
 #define PI 3.14159265
@@ -39,12 +40,14 @@ public:
 	{
 		this->i_position = i_position;
 		this->position = (this->i_position * 32).ToVector();
+		this->size = Vector (32, 32);
+		Log (this->position);
 		status = FREE;
 	}
 	
 	void Render ()
 	{
-		Render::DrawFilledRectangle(position, size, Color (0, 0, 0, 255));
+		Render::DrawFilledRectangle(position, size, Color (255, 255, 255, 255));
 		Render::DrawRectangle(position, size, Color (0, 0, 0, 255));
 	}
 };
