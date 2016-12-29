@@ -129,22 +129,22 @@ struct IVector2D
 	
 	IVector2D operator + (int i) const
 	{
-		return Vector (x + i, y + i);
+		return IVector (x + i, y + i);
 	}
 	
 	IVector2D operator - (int i) const
 	{
-		return Vector (x - i, y - i);
+		return IVector (x - i, y - i);
 	}
 	
 	IVector2D operator * (int i) const
 	{
-		return Vector (x * i, y * i);
+		return IVector (x * i, y * i);
 	}
 	
 	IVector2D operator / (int i) const
 	{
-		return Vector (x / i, y / i);
+		return IVector (x / i, y / i);
 	}
 	
 	Vector2D ToVector ();
