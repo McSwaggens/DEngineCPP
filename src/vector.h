@@ -1,8 +1,5 @@
 #pragma once
 
-#define LOC Vector2D
-#define SIZE Vector2D
-
 #define VP(c) c.x, c.y
 #define VPI(c) (int)c.x, (int)c.y
 #define Vector Vector2D
