@@ -2,6 +2,18 @@
 
 #define CP(c) c.r, c.g, c.b, c.a
 
+struct Color;
+
+namespace Colors
+{
+	extern const Color black;
+	extern const Color grey;
+	extern const Color white;
+	extern const Color red;
+	extern const Color green;
+	extern const Color blue;
+}
+
 struct Color
 {
 	int r, g, b, a;

@@ -47,8 +47,8 @@ public:
 	
 	void Render ()
 	{
-		Render::DrawFilledRectangle(position, size, Color (255, 255, 255, 255));
-		Render::DrawRectangle(position, size, Color (0, 0, 0, 255));
+		Render::DrawFilledRectangle(position, size, Colors::white);
+		Render::DrawRectangle(position, size, Colors::black);
 	}
 };
 
