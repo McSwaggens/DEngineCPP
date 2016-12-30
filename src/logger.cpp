@@ -2,6 +2,34 @@
 
 using namespace std;
 
+// INT
+void Log (uint64_t number)
+{
+	cout << number << endl;
+}
+void Log (string name, uint64_t number)
+{
+	cout << name << ": " << number << endl;
+}
+
+void Log (uint32_t number)
+{
+	cout << number << endl;
+}
+void Log (string name, uint32_t number)
+{
+	cout << name << ": " << number << endl;
+}
+
+void Log (int number)
+{
+	cout << number << endl;
+}
+void Log (string name, int number)
+{
+	cout << name << ": " << number << endl;
+}
+
 // CHAR
 void Log (string message)
 {
