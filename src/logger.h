@@ -27,3 +27,7 @@ void Log (std::string name, Color color);
 // VECTOR
 void Log (Vector vector);
 void Log (std::string name, Vector vector);
+
+// IVECTOR
+void Log (IVector vector);
+void Log (std::string name, IVector vector);

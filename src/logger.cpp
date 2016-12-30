@@ -59,3 +59,13 @@ void Log (string name, Vector vector)
 {
 	cout << name << ": x: " << vector.x << " y: " << vector.y << endl;
 }
+
+// IVECTOR
+void Log (IVector vector)
+{
+	cout << "x: " << vector.x << " y: " << vector.y << endl;
+}
+void Log (string name, IVector vector)
+{
+	cout << name << ": x: " << vector.x << " y: " << vector.y << endl;
+}
