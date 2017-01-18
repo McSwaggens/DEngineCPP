@@ -1,6 +1,7 @@
 #include "render.h"
 #include "engine_internal.h"
 #include "SDL/SDL_opengl.h"
+#include "font_internal.h"
 
 #define render EngineInternal::render
 
@@ -41,6 +42,28 @@ void Render::DrawRectangle (Vector2D start, Vector2D size, Color color)
 	SDL_Rect rect = { VPI(start), VPI(size) };
 	
 	SDL_RenderDrawRect (render, &rect);
+}
+
+void Render::DrawString(Vector2D position, std::string text, FONT font, Color color)
+{
+	SDL_Color text_color = { CP(color) };
+	
+	TTF_Font* fnt = FontInternal::GetSDLFont(font);
+	
+	SDL_Surface* surface = TTF_RenderText_Solid (FontInternal::GetSDLFont(font), text.c_str(), text_color);
+	
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(render, surface);
+	
+	size_t width = surface->w;
+	size_t height = surface->h;
+	
+	SDL_FreeSurface (surface);
+	
+	SDL_Rect rect = { position.x, position.y, width, height };
+	
+	SDL_RenderCopy (render, texture, NULL, &rect);
+	
+	SDL_DestroyTexture (texture);
 }
 
 void Render::PushRender ()

@@ -2,6 +2,7 @@
 #include "engine_internal.h"
 #include "logger.h"
 #include "render.h"
+#include "font_internal.h"
 
 using namespace EngineInternal;
 
@@ -34,7 +35,6 @@ bool EngineInternal::Initialize_SDL ()
 		return false;
 	}
 	
-	
 	Log ("Initializing SDL window");
 	EngineInternal::window = SDL_CreateWindow (Engine::game_name.c_str(), 100, 100, (int)screen_resolution.x, (int)screen_resolution.y, SDL_WINDOW_SHOWN);
 	
@@ -54,6 +54,8 @@ bool EngineInternal::Initialize_SDL ()
 		SDL_Quit();
 		return false;
 	}
+	
+	FontInternal::Initialize_SDL_TTF();
 	
 	Log ("SDL initialization finished.");
 	
@@ -176,6 +178,9 @@ void Engine::Shutdown ()
 	
 	// Signal that the engine should stop the tickloop after the current tick
 	running = false;
+	
+	// Shutdown font system
+	FontInternal::Shutdown_SDL_TTF();
 	
 	// Shutdown SDL
 	SDL_DestroyWindow (EngineInternal::window);
